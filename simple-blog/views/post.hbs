@@ -1,0 +1,104 @@
+<style>
+    /* Reset CSS styles */
+body, h1, h2, h3, p, ul, li, label, input, button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.post-content {
+    font-size: 16px;
+    color: #333;
+}
+
+.comments-title {
+    font-size: 20px;
+    color: #333;
+    margin-top: 20px;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.comment-item {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.comment-label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-top: 20px;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.comment-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Add more styles as needed */
+
+</style>
+<body>
+    <div class="container">
+        <h2 class="post-title">{{post.title}}</h2>
+        <p class="post-content">{{post.content}}</p>
+        <h3 class="comments-title">Comments</h3>
+        <ul class="comment-list">
+            {{#each post.comments}}
+                <li class="comment-item">{{this}}</li>
+            {{/each}}
+        </ul>
+        <form action="/comment/{{post.id}}" method="post" class="comment-form">
+            <label for="comment" class="comment-label">Comments:</label>
+            <input
+                type="text"
+                id="comment"
+                name="comment"
+                required
+                class="comment-input"
+            />
+            <button
+                type="submit"
+                class="comment-button"
+            >Send</button>
+        </form>
+    </div>
+</body>
